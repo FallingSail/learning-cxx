@@ -7,15 +7,21 @@
 class DynFibonacci {
     size_t *cache;
     int cached;
+    int capacity;
 
 public:
     // TODO: 实现动态设置容量的构造器
-    DynFibonacci(int capacity): cache(new size_t[capacity]), cached(2) {}
+    DynFibonacci(int capacity): cache(new size_t[capacity]), cached(2), capacity(capacity) {}
 
     // TODO: 实现复制构造器
     DynFibonacci(const DynFibonacci &a){
         cached = a.cached;
-        cache = a.cache;
+        capacity = a.capacity;
+        cache = new size_t[capacity];
+        for(int i=0;i<capacity;i++)
+        {
+            cache[i] = a.cache[i];
+        }
     }
 
     // TODO: 实现析构器，释放缓存空间
